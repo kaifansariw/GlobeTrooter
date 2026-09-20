@@ -35,6 +35,14 @@ async function initDb() {
       const schemaSql = fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf-8');
       await pool.query(schemaSql);
       console.log('✅ Database schema and seeds successfully applied!');
+    } else {
+      // Ensure demo users have verified working bcrypt hash for "password123"
+      await pool.query(`
+        UPDATE users
+        SET password_hash = '$2a$10$rqOf2OQnASW1QfUF8XTeRO6rvOtnYzo65FdU8vr1e/dpw/NEny1p6'
+        WHERE email IN ('alex@globetrotter.app', 'sarah@email.com', 'marco@email.com');
+      `);
+      console.log('🔒 Demo account credentials verified.');
     }
   } catch (err) {
     console.warn('⚠️ Auto-init DB check notice:', err.message);

@@ -155,15 +155,15 @@ CREATE INDEX idx_act_city         ON activities(city);
 INSERT INTO users (first_name, last_name, email, password_hash, phone, city, country, bio, is_admin)
 VALUES
   ('Alex', 'Wanderer', 'alex@globetrotter.app',
-   '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J1KUkYb/G',
+   '$2a$10$rqOf2OQnASW1QfUF8XTeRO6rvOtnYzo65FdU8vr1e/dpw/NEny1p6',
    '+1 (555) 234-5678', 'New York', 'USA',
    'Passionate explorer of hidden gems around the world 🌍', TRUE),
   ('Sarah', 'Chen', 'sarah@email.com',
-   '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J1KUkYb/G',
+   '$2a$10$rqOf2OQnASW1QfUF8XTeRO6rvOtnYzo65FdU8vr1e/dpw/NEny1p6',
    '+1 (555) 345-6789', 'San Francisco', 'USA',
    'Solo traveler & food enthusiast', FALSE),
   ('Marco', 'Rivera', 'marco@email.com',
-   '$2a$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewdBPj4J1KUkYb/G',
+   '$2a$10$rqOf2OQnASW1QfUF8XTeRO6rvOtnYzo65FdU8vr1e/dpw/NEny1p6',
    '+34 612 345 678', 'Madrid', 'Spain',
    'Architecture lover & coffee connoisseur', FALSE);
 

@@ -12,6 +12,7 @@ if (import.meta.env.VITE_API_URL) {
 const api = axios.create({
   baseURL: apiBase,
   headers: { 'Content-Type': 'application/json' },
+  timeout: 30000,
 });
 
 // Attach JWT token to every request
@@ -21,14 +22,17 @@ api.interceptors.request.use((config) => {
   return config;
 });
 
-// Handle 401 globally
+// Handle 401 globally (only redirect if not already on an auth page)
 api.interceptors.response.use(
   (res) => res,
   (err) => {
     if (err.response?.status === 401) {
-      localStorage.removeItem('gt_token');
-      localStorage.removeItem('gt_user');
-      window.location.href = '/login';
+      const path = window.location.pathname;
+      if (!path.includes('/login') && !path.includes('/register')) {
+        localStorage.removeItem('gt_token');
+        localStorage.removeItem('gt_user');
+        window.location.href = '/login';
+      }
     }
     return Promise.reject(err);
   }

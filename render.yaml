@@ -39,4 +39,4 @@ services:
         fromService:
           type: web
           name: globetrotter-api
-          property: host
+          envVarKey: RENDER_EXTERNAL_URL

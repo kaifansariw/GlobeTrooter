@@ -19,7 +19,14 @@ export default function Login() {
       await login(form.email, form.password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.error || 'Login failed. Please try again.');
+      console.error('Login error:', err);
+      const isNetworkErr = err.code === 'ERR_NETWORK' || !err.response;
+      const msg =
+        err.response?.data?.error ||
+        (isNetworkErr
+          ? 'Cannot connect to backend server. The free Render instance may still be waking up (takes ~30-45s). Please wait a moment and try again.'
+          : err.message || 'Login failed. Please check your credentials.');
+      setError(msg);
     } finally { setLoading(false); }
   };
 
