@@ -1,0 +1,2204 @@
+/* ============================================================
+   GlobeTrotter – Odoo Enterprise Design System
+   Clean, human, enterprise-grade business SaaS aesthetic
+   Inspired by Odoo Web Client & Website design language
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap');
+
+:root {
+  /* Odoo Signature Color Palette */
+  --odoo-primary: #714B67;
+  --odoo-primary-dark: #57394E;
+  --odoo-primary-light: #F4EFF3;
+  --odoo-primary-tint: rgba(113, 75, 103, 0.08);
+
+  --odoo-teal: #00A09D;
+  --odoo-teal-dark: #008481;
+  --odoo-teal-light: #E6F7F7;
+  --odoo-teal-tint: rgba(0, 160, 157, 0.08);
+
+  --odoo-amber: #F2994A;
+  --odoo-amber-light: #FEF7E6;
+  --odoo-emerald: #198754;
+  --odoo-emerald-light: #E8F5E9;
+  --odoo-rose: #DC3545;
+  --odoo-rose-light: #FDE8E8;
+  --odoo-gray: #6C757D;
+  --odoo-gray-light: #F8F9FA;
+
+  /* Theme Canvas & Surfaces */
+  --bg-primary: #F8F9FA;
+  --bg-secondary: #F1F3F5;
+  --bg-card: #FFFFFF;
+  --bg-card-hover: #FAFBFC;
+  --bg-glass: rgba(255, 255, 255, 0.95);
+
+  /* Semantic Accents mapped to Odoo */
+  --accent-teal: var(--odoo-teal);
+  --accent-teal-glow: rgba(0, 160, 157, 0.15);
+  --accent-violet: var(--odoo-primary);
+  --accent-violet-glow: rgba(113, 75, 103, 0.15);
+  --accent-amber: var(--odoo-amber);
+  --accent-amber-glow: rgba(242, 153, 74, 0.15);
+  --accent-emerald: var(--odoo-emerald);
+  --accent-rose: var(--odoo-rose);
+  --accent-coral: #E65100;
+
+  /* Gradients – Odoo Inspired */
+  --gradient-primary: linear-gradient(135deg, #714B67 0%, #875A7B 60%, #00A09D 100%);
+  --gradient-warm: linear-gradient(135deg, #F2994A 0%, #DC3545 100%);
+  --gradient-bg: #F8F9FA;
+
+  /* Typography Colors */
+  --text-primary: #1F2937;
+  --text-secondary: #4B5563;
+  --text-muted: #6B7280;
+  --text-light: #9CA3AF;
+
+  /* Clean Enterprise Borders */
+  --border-subtle: #E5E7EB;
+  --border-card: #E5E7EB;
+  --border-accent: #714B67;
+  --border-input: #D1D5DB;
+  --border-focus: #714B67;
+
+  /* Spacing */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+
+  /* Odoo Standard Radii (Crisp enterprise feel) */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-full: 9999px;
+
+  /* Shadows – Soft, natural elevation */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+  --shadow-card-hover: 0 6px 16px -2px rgba(0, 0, 0, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.04);
+  --shadow-btn: 0 1px 3px rgba(113, 75, 103, 0.2);
+  --shadow-dropdown: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.06);
+
+  --sidebar-width: 240px;
+  --font-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  --transition-fast: 0.15s ease;
+  --transition-base: 0.2s ease;
+  --transition-slow: 0.35s ease;
+}
+
+/* Base Reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 15px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+::-webkit-scrollbar-track {
+  background: #F1F3F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #CED4DA;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ADB5BD;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+h1 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.25rem, 2.5vw, 1.6rem); letter-spacing: -0.01em; }
+h3 { font-size: clamp(1.05rem, 1.8vw, 1.25rem); }
+p  { color: var(--text-secondary); line-height: 1.6; }
+a  { text-decoration: none; color: var(--odoo-teal); font-weight: 500; }
+a:hover { color: var(--odoo-teal-dark); text-decoration: underline; }
+button { font-family: var(--font-body); }
+
+/* Utilities */
+.hidden { display: none !important; }
+.w-full { width: 100%; }
+.text-gradient {
+  color: var(--odoo-primary);
+  font-weight: 700;
+}
+
+/* Enterprise Card (Odoo style) */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.glass-card:hover {
+  background: var(--bg-card);
+  box-shadow: var(--shadow-card-hover);
+  border-color: #D1D5DB;
+}
+
+/* ============================================================
+   Odoo Buttons
+   Clean, slightly rounded (4px-6px), crisp solid & outline
+   ============================================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  line-height: 1.4;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+/* Primary Odoo Button (Aubergine) */
+.btn-primary {
+  background: var(--odoo-primary);
+  border-color: var(--odoo-primary);
+  color: #FFFFFF;
+  box-shadow: 0 1px 2px rgba(113, 75, 103, 0.2);
+}
+.btn-primary:hover {
+  background: var(--odoo-primary-dark);
+  border-color: var(--odoo-primary-dark);
+  color: #FFFFFF;
+  box-shadow: 0 2px 5px rgba(113, 75, 103, 0.3);
+}
+
+/* Teal Action Button (Odoo Cyan/Teal) */
+.btn-teal {
+  background: var(--odoo-teal);
+  border-color: var(--odoo-teal);
+  color: #FFFFFF;
+}
+.btn-teal:hover {
+  background: var(--odoo-teal-dark);
+  border-color: var(--odoo-teal-dark);
+}
+
+/* Secondary Button (Clean White Enterprise) */
+.btn-secondary {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border: 1px solid var(--border-input);
+  box-shadow: var(--shadow-sm);
+}
+.btn-secondary:hover {
+  background: #F8F9FA;
+  border-color: #ADB5BD;
+  color: var(--text-primary);
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid transparent;
+}
+.btn-ghost:hover {
+  color: var(--text-primary);
+  background: #F1F3F5;
+}
+
+/* Danger Button */
+.btn-danger {
+  background: var(--odoo-rose-light);
+  color: var(--odoo-rose);
+  border: 1px solid #F8B4B4;
+}
+.btn-danger:hover {
+  background: var(--odoo-rose);
+  color: #FFFFFF;
+  border-color: var(--odoo-rose);
+}
+
+.btn-sm { padding: 5px 10px; font-size: 0.78rem; border-radius: var(--radius-sm); }
+.btn-lg { padding: 10px 20px; font-size: 0.95rem; border-radius: var(--radius-md); }
+
+/* ============================================================
+   Forms & Inputs (Odoo standard style)
+   ============================================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.form-input,
+.form-textarea,
+.form-select {
+  background: #FFFFFF;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  padding: 8px 12px;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  color: var(--text-primary);
+  width: 100%;
+  transition: all var(--transition-fast);
+  outline: none;
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: var(--text-light);
+}
+
+.form-input:focus,
+.form-textarea:focus,
+.form-select:focus {
+  border-color: var(--odoo-primary);
+  box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.12);
+  background: #FFFFFF;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.form-select option {
+  background: #FFFFFF;
+  color: var(--text-primary);
+}
+
+.form-grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+/* ============================================================
+   Odoo Badges / Tags (Soft pastel background with rich text)
+   ============================================================ */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: var(--radius-sm);
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  line-height: 1.2;
+}
+
+.badge-teal {
+  background: var(--odoo-teal-light);
+  color: var(--odoo-teal-dark);
+  border: 1px solid #B2DFDB;
+}
+
+.badge-amber {
+  background: var(--odoo-amber-light);
+  color: #B78103;
+  border: 1px solid #FCE4A6;
+}
+
+.badge-emerald {
+  background: var(--odoo-emerald-light);
+  color: #1B5E20;
+  border: 1px solid #C8E6C9;
+}
+
+.badge-violet, .badge-purple {
+  background: var(--odoo-primary-light);
+  color: var(--odoo-primary);
+  border: 1px solid #E2D4DE;
+}
+
+.badge-rose {
+  background: var(--odoo-rose-light);
+  color: var(--odoo-rose);
+  border: 1px solid #F8B4B4;
+}
+
+.badge-gray {
+  background: #F1F3F5;
+  color: #495057;
+  border: 1px solid #DEE2E6;
+}
+
+/* Avatar */
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--odoo-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  border: 2px solid #FFFFFF;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.avatar-lg { width: 52px; height: 52px; font-size: 1.2rem; }
+.avatar-2xl { width: 100px; height: 100px; font-size: 2.2rem; }
+
+/* Loading */
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+.loader-wrap { text-align: center; }
+.globe-icon {
+  font-size: 3.5rem;
+  display: block;
+  animation: globe-spin 2s linear infinite;
+}
+@keyframes globe-spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.loader-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+  margin-top: var(--space-md);
+}
+.loader-bar {
+  width: 180px;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  margin: var(--space-lg) auto 0;
+  overflow: hidden;
+}
+.loader-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--odoo-primary);
+  border-radius: 2px;
+  animation: loader-progress 1.2s ease forwards;
+}
+@keyframes loader-progress { to { width: 100%; } }
+
+/* Layout Structure */
+.screen-root {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  overflow: hidden;
+  background: #F8F9FA;
+}
+
+.main-content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  background: #F8F9FA;
+}
+
+.page-content {
+  padding: var(--space-lg) var(--space-xl);
+  flex: 1;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Sections */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+.section-heading h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.section-heading a {
+  font-size: 0.85rem;
+  color: var(--odoo-teal);
+  cursor: pointer;
+  font-weight: 500;
+}
+.section-heading a:hover {
+  color: var(--odoo-teal-dark);
+}
+
+.divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: var(--space-lg) 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: var(--space-3xl) var(--space-xl);
+  background: #FFFFFF;
+  border: 1px dashed var(--border-subtle);
+  border-radius: var(--radius-lg);
+}
+.empty-state .empty-icon {
+  font-size: 3rem;
+  margin-bottom: var(--space-md);
+  opacity: 0.6;
+}
+.empty-state h3 {
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+  font-size: 1.05rem;
+}
+.empty-state p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* Filter Bar (Odoo ControlPanel pills) */
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-pill:hover {
+  background: #F8F9FA;
+  border-color: #ADB5BD;
+  color: var(--text-primary);
+}
+
+.filter-pill.active {
+  background: var(--odoo-primary-light);
+  border-color: var(--odoo-primary);
+  color: var(--odoo-primary);
+  font-weight: 600;
+}
+
+/* Toast Notification */
+.toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 10000;
+  box-shadow: var(--shadow-dropdown);
+  transform: translateY(80px);
+  opacity: 0;
+  transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+  min-width: 280px;
+  color: var(--text-primary);
+}
+.toast.show { transform: translateY(0); opacity: 1; }
+.toast-icon { font-size: 1.2rem; }
+.toast-text { flex: 1; font-size: 0.88rem; font-weight: 500; }
+.toast-success { border-left: 4px solid var(--odoo-emerald); }
+.toast-error { border-left: 4px solid var(--odoo-rose); }
+
+/* Progress */
+.progress-bar-wrap {
+  background: #E9ECEF;
+  border-radius: var(--radius-full);
+  height: 6px;
+  overflow: hidden;
+}
+.progress-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--odoo-teal);
+  transition: width 0.4s ease;
+}
+
+/* Stat Card (Odoo KPI block) */
+.stat-card {
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-sm);
+}
+.stat-value {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+}
+.stat-label {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-full);
+  background: var(--odoo-primary);
+  border: none;
+  color: #FFFFFF;
+  font-size: 1.4rem;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(113, 75, 103, 0.4);
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+.fab:hover {
+  background: var(--odoo-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(113, 75, 103, 0.5);
+}
+.fab-extended {
+  width: auto;
+  border-radius: var(--radius-full);
+  padding: 0 20px;
+  gap: 8px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  height: 46px;
+}
+
+/* Animations */
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+.animate-fadeInUp { animation: fadeInUp 0.3s ease forwards; }
+.page-enter { animation: fadeInUp 0.25s ease forwards; }
+
+/* ============================================================
+   SIDEBAR (Odoo ERP clean light navigation)
+   ============================================================ */
+.sidebar {
+  width: var(--sidebar-width);
+  height: 100vh;
+  background: #FFFFFF;
+  border-right: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md) 0;
+  z-index: 100;
+  flex-shrink: 0;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.03);
+}
+
+.sidebar-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 0 var(--space-lg) var(--space-md);
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: var(--space-sm);
+}
+.sidebar-logo .logo-icon {
+  font-size: 1.6rem;
+}
+.sidebar-logo .logo-text {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+  letter-spacing: -0.01em;
+}
+
+.sidebar-nav {
+  list-style: none;
+  flex: 1;
+  padding: 0 var(--space-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 9px var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-nav .nav-link:hover {
+  background: #F8F9FA;
+  color: var(--text-primary);
+}
+
+/* Odoo Active Nav Item (Subtle purple tint with left brand marker) */
+.sidebar-nav .nav-link.active {
+  background: var(--odoo-primary-light);
+  color: var(--odoo-primary);
+  font-weight: 600;
+  border-left: 3px solid var(--odoo-primary);
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  width: 22px;
+  text-align: center;
+}
+
+.sidebar-footer {
+  padding: var(--space-sm);
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-footer .nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 8px var(--space-md);
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  border-left: 3px solid transparent;
+}
+
+.sidebar-footer .nav-link:hover {
+  background: #F8F9FA;
+  color: var(--text-primary);
+}
+
+.logout-link:hover {
+  color: var(--odoo-rose) !important;
+  background: var(--odoo-rose-light) !important;
+}
+
+/* ============================================================
+   HEADER (Odoo Top Navigation Bar – Aubergine / Purple)
+   ============================================================ */
+.app-header {
+  height: 56px;
+  background: var(--odoo-primary);
+  color: #FFFFFF;
+  border-bottom: 1px solid var(--odoo-primary-dark);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0 var(--space-xl);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  flex-shrink: 0;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.header-search-wrap {
+  flex: 1;
+  max-width: 440px;
+  position: relative;
+}
+
+.header-search {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 7px 14px 7px 38px;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: #FFFFFF;
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.header-search::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.header-search:focus {
+  background: #FFFFFF;
+  color: var(--text-primary);
+  border-color: #FFFFFF;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.3);
+}
+
+.header-search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.9rem;
+  pointer-events: none;
+  opacity: 0.8;
+  color: inherit;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-left: auto;
+}
+
+.header-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  color: #FFFFFF;
+}
+
+.header-icon-btn:hover {
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: 3px 8px 3px 4px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  color: #FFFFFF;
+}
+
+.header-user:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.header-user-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #FFFFFF;
+}
+
+.header-user-role {
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.header-filter-group {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.header-filter-group .filter-pill {
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  color: #FFFFFF;
+}
+.header-filter-group .filter-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ============================================================
+   TRIP CARD (Odoo Kanban Card Style)
+   ============================================================ */
+.trip-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-base);
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--shadow-card);
+}
+
+.trip-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: #CBD5E1;
+}
+
+.trip-card-image {
+  height: 130px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  background-color: #F4EFF3;
+}
+
+.trip-card-badge {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  z-index: 1;
+}
+
+.trip-card-body {
+  padding: var(--space-md);
+  flex: 1;
+  background: #FFFFFF;
+}
+
+.trip-card-title {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.trip-card-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.trip-card-actions {
+  display: flex;
+  gap: var(--space-sm);
+  padding: 0 var(--space-md) var(--space-md);
+  background: #FFFFFF;
+  border-top: 1px solid #F1F3F5;
+  padding-top: var(--space-sm);
+}
+
+/* ============================================================
+   DESTINATION CARD (Odoo Catalog Grid item)
+   ============================================================ */
+.trip-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.trip-card:hover .trip-card-photo {
+  transform: scale(1.04);
+}
+
+.dest-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.dest-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--odoo-primary);
+}
+
+.dest-card-img-wrap {
+  height: 110px;
+  overflow: hidden;
+  position: relative;
+  background: #F1F3F5;
+}
+
+.dest-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.dest-card:hover .dest-card-photo {
+  transform: scale(1.06);
+}
+
+.dest-card-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: var(--space-sm) var(--space-sm) 2px;
+}
+
+.dest-card-country {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  padding-bottom: var(--space-sm);
+}
+
+.suggestion-card-img-wrap {
+  height: 110px;
+  overflow: hidden;
+  position: relative;
+  background: #F1F3F5;
+}
+
+.suggestion-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.35s ease;
+  display: block;
+}
+
+.suggestion-card:hover .suggestion-card-photo {
+  transform: scale(1.06);
+}
+
+/* ACTIVITY RESULT (Odoo List Row / Card) */
+.activity-result-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  transition: all var(--transition-base);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.activity-result-card:hover {
+  background: #F8F9FA;
+  border-color: var(--odoo-teal);
+  transform: translateX(3px);
+}
+
+.activity-result-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-sm);
+  background: var(--odoo-teal-light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.activity-result-info { flex: 1; }
+.activity-result-name { font-weight: 600; font-size: 0.92rem; color: var(--text-primary); }
+.activity-result-meta {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 3px;
+  display: flex;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+.activity-result-price {
+  font-weight: 700;
+  color: var(--odoo-teal);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SECTION BUILDER (Odoo Form Sheet)
+   ============================================================ */
+.section-block {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-base);
+}
+
+.section-block:hover {
+  border-color: #CBD5E1;
+}
+
+.section-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-md);
+}
+
+.section-block-title {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+}
+
+.section-block-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+/* DAY BLOCK & TABLE (Odoo Form Notebook / Sub-table) */
+.day-block {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.day-block-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-sm) var(--space-lg);
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.day-block-title {
+  font-weight: 600;
+  color: var(--odoo-primary);
+  font-size: 0.9rem;
+}
+
+.day-block-date {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.activity-table { width: 100%; }
+
+.activity-table-header {
+  display: grid;
+  grid-template-columns: 1fr 180px 120px;
+  gap: var(--space-md);
+  padding: 8px var(--space-lg);
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.activity-table-header span {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.activity-row {
+  display: grid;
+  grid-template-columns: 1fr 180px 120px;
+  gap: var(--space-md);
+  align-items: center;
+  padding: 10px var(--space-lg);
+  border-bottom: 1px solid #F1F3F5;
+  transition: all var(--transition-fast);
+}
+
+.activity-row:last-child { border-bottom: none; }
+.activity-row:hover { background: #F8F9FA; }
+
+.activity-row-name {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.activity-row-time {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.activity-row-cost {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--odoo-teal);
+}
+
+.activity-connector {
+  color: var(--odoo-teal);
+  opacity: 0.5;
+  margin-left: 20px;
+  font-size: 0.72rem;
+}
+
+/* ============================================================
+   CALENDAR (Odoo Clean Calendar Grid)
+   ============================================================ */
+.calendar-wrap {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) var(--space-xl);
+  border-bottom: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+}
+
+.calendar-title {
+  font-family: var(--font-heading);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.calendar-nav-btn {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-sm);
+  background: #FFFFFF;
+  border: 1px solid var(--border-input);
+  color: var(--text-secondary);
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--transition-fast);
+}
+
+.calendar-nav-btn:hover {
+  background: #F8F9FA;
+  border-color: #ADB5BD;
+  color: var(--text-primary);
+}
+
+.calendar-grid { padding: var(--space-md); }
+
+.calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: var(--space-xs);
+}
+
+.calendar-weekday {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 6px;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+}
+
+.calendar-day {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  border-radius: var(--radius-sm);
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-direction: column;
+  gap: 2px;
+  min-height: 64px;
+  padding: 6px 4px;
+  background: #FFFFFF;
+  border: 1px solid #F1F3F5;
+  color: var(--text-primary);
+}
+
+.calendar-day:hover {
+  background: #F8F9FA;
+  border-color: #E2E8F0;
+}
+
+.calendar-day.today {
+  background: var(--odoo-teal-light);
+  color: var(--odoo-teal-dark);
+  font-weight: 700;
+  border: 1px solid #B2DFDB;
+}
+
+.calendar-day.has-trip { font-weight: 600; }
+
+.trip-event-label {
+  font-size: 0.68rem;
+  padding: 2px 5px;
+  border-radius: 3px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 95%;
+  font-weight: 600;
+  text-align: center;
+  margin-top: 2px;
+}
+
+.trip-event-paris {
+  background: var(--odoo-teal-light);
+  color: var(--odoo-teal-dark);
+  border: 1px solid #B2DFDB;
+}
+.trip-event-nyc {
+  background: var(--odoo-primary-light);
+  color: var(--odoo-primary);
+  border: 1px solid #E2D4DE;
+}
+.trip-event-japan {
+  background: var(--odoo-emerald-light);
+  color: #1B5E20;
+  border: 1px solid #C8E6C9;
+}
+
+.calendar-legend {
+  display: flex;
+  gap: var(--space-lg);
+  flex-wrap: wrap;
+  padding: var(--space-sm) var(--space-xl);
+  border-top: 1px solid var(--border-subtle);
+  background: #F8F9FA;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+}
+
+/* ============================================================
+   COMMUNITY POSTS
+   ============================================================ */
+.community-post {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.community-post:hover {
+  border-color: #CBD5E1;
+  box-shadow: var(--shadow-card-hover);
+}
+
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin-bottom: var(--space-md);
+}
+
+.post-user-info h4 {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.post-user-info span {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+.post-content {
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-md);
+}
+
+.post-tags {
+  display: flex;
+  gap: var(--space-sm);
+  flex-wrap: wrap;
+}
+
+.post-actions {
+  display: flex;
+  gap: var(--space-md);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.post-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+  background: none;
+  border: none;
+}
+
+.post-action-btn:hover {
+  background: #F1F3F5;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   PROFILE (Odoo Partner / Employee Form)
+   ============================================================ */
+.profile-hero {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  display: flex;
+  gap: var(--space-xl);
+  align-items: flex-start;
+  margin-bottom: var(--space-xl);
+  box-shadow: var(--shadow-sm);
+}
+
+.profile-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+}
+
+.profile-info-field {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.profile-info-field label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-muted);
+}
+
+.profile-info-field span {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* ============================================================
+   ADMIN & CHARTS
+   ============================================================ */
+.admin-tab-bar {
+  display: flex;
+  gap: 4px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 4px;
+  margin-bottom: var(--space-xl);
+  overflow-x: auto;
+  box-shadow: var(--shadow-sm);
+}
+
+.admin-tab {
+  flex: 1;
+  padding: 8px 16px;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  transition: all var(--transition-fast);
+  background: none;
+  border: none;
+}
+
+.admin-tab.active {
+  background: var(--odoo-primary);
+  color: #FFFFFF;
+  font-weight: 600;
+}
+
+.admin-tab:hover:not(.active) {
+  background: #F8F9FA;
+  color: var(--text-primary);
+}
+
+.chart-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.chart-card-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+  color: var(--text-primary);
+}
+
+/* BUDGET TABLE */
+.budget-table-wrap {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.budget-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.budget-table th {
+  padding: 10px var(--space-lg);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+  text-align: left;
+  background: #F8F9FA;
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.budget-table td {
+  padding: 12px var(--space-lg);
+  font-size: 0.88rem;
+  border-bottom: 1px solid #F1F3F5;
+  color: var(--text-primary);
+}
+
+.budget-table tr:last-child td { border-bottom: none; }
+.budget-table tr:hover td { background: #F8F9FA; }
+
+/* ============================================================
+   AUTH SCREEN (Odoo Clean Enterprise Login)
+   ============================================================ */
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  background: #F8F9FA;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+  background: linear-gradient(135deg, #714B67 0%, #875A7B 70%, #00A09D 100%);
+  color: #FFFFFF;
+}
+
+.auth-left-content {
+  max-width: 440px;
+  width: 100%;
+}
+
+.auth-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-xl);
+}
+
+.auth-brand-icon { font-size: 2.5rem; }
+
+.auth-brand-text {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+}
+
+.auth-tagline {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+}
+
+.auth-features {
+  margin-top: var(--space-2xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.auth-feature-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.auth-feature-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+  color: #FFFFFF;
+}
+
+.auth-feature-text {
+  font-size: 0.9rem;
+  color: #FFFFFF;
+}
+
+.auth-right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-3xl);
+  background: #F8F9FA;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 420px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-2xl);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+}
+
+.auth-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.auth-card-sub {
+  color: var(--text-secondary);
+  font-size: 0.88rem;
+  margin-bottom: var(--space-xl);
+}
+
+.auth-avatar-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.avatar-upload-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #F8F9FA;
+  border: 2px dashed var(--border-input);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  overflow: hidden;
+}
+
+.avatar-upload-circle:hover {
+  border-color: var(--odoo-primary);
+  background: var(--odoo-primary-light);
+}
+
+.avatar-upload-hint {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  margin: var(--space-lg) 0;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+.auth-link {
+  color: var(--odoo-teal);
+  font-weight: 600;
+  cursor: pointer;
+}
+.auth-link:hover {
+  text-decoration: underline;
+  color: var(--odoo-teal-dark);
+}
+
+/* ============================================================
+   DASHBOARD HERO (Odoo Banner Style)
+   ============================================================ */
+.dashboard-hero {
+  position: relative;
+  height: 220px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: var(--space-xl);
+  background: linear-gradient(135deg, #714B67 0%, #875A7B 65%, #00A09D 100%);
+  display: flex;
+  align-items: flex-end;
+  padding: var(--space-xl);
+  box-shadow: var(--shadow-card);
+}
+
+.dashboard-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.25) 0%, transparent 70%);
+}
+
+.hero-bg-emojis {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2xl);
+  font-size: 4rem;
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.dashboard-hero-content {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-greeting {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  margin-bottom: 2px;
+}
+
+.hero-title {
+  font-size: 1.8rem;
+  color: #FFFFFF;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.hero-subtitle {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.8);
+  margin-top: 4px;
+}
+
+.hero-stats {
+  position: absolute;
+  top: var(--space-lg);
+  right: var(--space-lg);
+  z-index: 1;
+  display: flex;
+  gap: var(--space-sm);
+}
+
+.hero-stat-chip {
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: var(--radius-sm);
+  padding: 5px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-md);
+}
+
+.trips-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-lg);
+}
+
+/* CREATE TRIP */
+.create-trip-layout {
+  display: grid;
+  grid-template-columns: 380px 1fr;
+  gap: var(--space-xl);
+}
+
+.create-trip-form-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-xl);
+  height: fit-content;
+  position: sticky;
+  top: 76px;
+  box-shadow: var(--shadow-sm);
+}
+
+.suggestions-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.suggestion-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.suggestion-card:hover {
+  border-color: var(--odoo-teal);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.suggestion-card-img {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  background: #F8F9FA;
+  border-bottom: 1px solid #F1F3F5;
+}
+
+.suggestion-card-info {
+  padding: var(--space-sm) var(--space-md);
+}
+
+.suggestion-card-name {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.suggestion-card-country {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* MY TRIPS */
+.trips-section { margin-bottom: var(--space-2xl); }
+
+.trips-section-title {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  margin-bottom: var(--space-md);
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.trips-section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border-subtle);
+}
+
+/* ITINERARY BUILDER */
+.itinerary-builder-layout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: var(--space-xl);
+}
+
+.itinerary-builder-sidebar {
+  position: sticky;
+  top: 76px;
+  height: fit-content;
+  background: #FFFFFF;
+  border: 1px solid var(--border-card);
+  border-radius: var(--radius-md);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.budget-total {
+  font-family: var(--font-heading);
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+}
+
+.budget-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.budget-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+}
+
+.budget-line-label { color: var(--text-secondary); }
+.budget-line-value { font-weight: 600; color: var(--text-primary); }
+
+.add-section-btn {
+  width: 100%;
+  padding: var(--space-md);
+  background: #FFFFFF;
+  border: 2px dashed #CBD5E1;
+  border-radius: var(--radius-md);
+  color: var(--odoo-teal);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+}
+
+.add-section-btn:hover {
+  background: var(--odoo-teal-light);
+  border-color: var(--odoo-teal);
+}
+
+/* SEARCH */
+.search-input-large {
+  background: #FFFFFF;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  width: 100%;
+  outline: none;
+  transition: all var(--transition-base);
+  box-shadow: var(--shadow-sm);
+}
+
+.search-input-large::placeholder {
+  color: var(--text-light);
+}
+
+.search-input-large:focus {
+  border-color: var(--odoo-primary);
+  box-shadow: 0 0 0 3px rgba(113, 75, 103, 0.15);
+}
+
+.search-results-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+/* RESPONSIVE BREAKPOINTS */
+@media (max-width: 1200px) {
+  .destinations-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 1000px) {
+  .create-trip-layout, .itinerary-builder-layout { grid-template-columns: 1fr; }
+  .create-trip-form-card, .itinerary-builder-sidebar { position: static; }
+  .suggestions-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 900px) {
+  .destinations-grid, .trips-grid { grid-template-columns: repeat(2, 1fr); }
+  .auth-screen { flex-direction: column; }
+  .auth-left { flex: none; padding: var(--space-xl); border-right: none; }
+  .auth-features { display: none; }
+  .profile-hero { flex-direction: column; }
+  .profile-info-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    left: -240px;
+    z-index: 200;
+    transition: left 0.3s ease;
+  }
+  .sidebar.mobile-open { left: 0; }
+  .form-grid-2 { grid-template-columns: 1fr; }
+  .page-content { padding: var(--space-md); }
+  .fab { bottom: 16px; right: 16px; }
+  .trips-grid { grid-template-columns: 1fr; }
+  .activity-table-header, .activity-row { grid-template-columns: 1fr 100px; }
+}
+
+@media (max-width: 600px) {
+  .destinations-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-hero { height: 180px; }
+}
+
+/* ============================================================
+   Odoo Popover & Dropdown Menu
+   ============================================================ */
+.filter-dropdown-container {
+  display: inline-block;
+  position: relative;
+}
+
+.odoo-popover {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  min-width: 220px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  padding: 6px 0;
+  color: var(--text-primary);
+  text-align: left;
+}
+
+.header-filter-group .odoo-popover {
+  top: calc(100% + 10px);
+}
+
+.odoo-popover-header {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding: 6px 14px 4px;
+}
+
+.odoo-popover-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+}
+
+.odoo-popover-item:hover {
+  background: #F8F9FA;
+  color: var(--odoo-primary);
+}
+
+.odoo-check {
+  width: 14px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--odoo-primary);
+  text-align: center;
+}
+
+.odoo-popover-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  margin: 5px 0;
+}
+
+.odoo-popover-clear {
+  padding: 6px 14px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--odoo-rose);
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast);
+}
+
+.odoo-popover-clear:hover {
+  background: var(--odoo-rose-light);
+}
+
+.filter-active-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--odoo-teal);
+  display: inline-block;
+  margin-left: 2px;
+}
+
+/* Active Filter Badges */
+.active-filters-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: var(--space-md);
+}
+
+.active-filter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: var(--odoo-primary-light);
+  border: 1px solid #E2D4DE;
+  border-radius: var(--radius-sm);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--odoo-primary);
+}
+
+.active-filter-remove {
+  cursor: pointer;
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.active-filter-remove:hover {
+  opacity: 1;
+  color: var(--odoo-rose);
+}
+
