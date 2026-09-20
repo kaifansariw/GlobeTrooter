@@ -18,7 +18,7 @@ import Admin            from './pages/Admin';
 export default function App() {
   return (
     <AuthProvider>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           {/* Public */}
           <Route path="/login"    element={<Login />} />
