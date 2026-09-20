@@ -27,10 +27,9 @@ services:
   - type: web
     name: globetrotter-web
     runtime: static
-    plan: free
     rootDir: client
     buildCommand: npm install && npm run build
-    staticPublishPath: dist
+    staticPublishPath: ./dist
     routes:
       - type: rewrite
         source: /*
